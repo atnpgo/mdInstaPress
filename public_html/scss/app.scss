@@ -1,0 +1,156 @@
+/*
+_____/\\\\\\\\\_____/\\\\\\\\\\\\\\\__/\\\\\_____/\\\__/\\\\\\\\\\\\\_______/\\\\\\\\\\\\_______/\\\\\______        
+ ___/\\\\\\\\\\\\\__\///////\\\/////__\/\\\\\\___\/\\\_\/\\\/////////\\\___/\\\//////////______/\\\///\\\____       
+  __/\\\/////////\\\_______\/\\\_______\/\\\/\\\__\/\\\_\/\\\_______\/\\\__/\\\_______________/\\\/__\///\\\__      
+   _\/\\\_______\/\\\_______\/\\\_______\/\\\//\\\_\/\\\_\/\\\\\\\\\\\\\/__\/\\\____/\\\\\\\__/\\\______\//\\\_     
+    _\/\\\\\\\\\\\\\\\_______\/\\\_______\/\\\\//\\\\/\\\_\/\\\/////////____\/\\\___\/////\\\_\/\\\_______\/\\\_    
+     _\/\\\/////////\\\_______\/\\\_______\/\\\_\//\\\/\\\_\/\\\_____________\/\\\_______\/\\\_\//\\\______/\\\__   
+      _\/\\\_______\/\\\_______\/\\\_______\/\\\__\//\\\\\\_\/\\\_____________\/\\\_______\/\\\__\///\\\__/\\\____  
+       _\/\\\_______\/\\\_______\/\\\_______\/\\\___\//\\\\\_\/\\\_____________\//\\\\\\\\\\\\/_____\///\\\\\/_____ 
+        _\///________\///________\///________\///_____\/////__\///_______________\////////////_________\/////_______
+*/
+
+$font-family-sans-serif: 'Open Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+$brand-primary: #4357ad;
+$brand-success: #8ac926;
+$brand-warning: #ffca3a;
+$brand-danger: #d63230;
+$brand-info: #60b2b8;
+
+@import "./bootstrap-4.0.0/_functions.scss";
+@import "./bootstrap-4.0.0/_variables.scss";
+@import "./bootstrap-4.0.0/_mixins.scss";
+@import "./bootstrap-4.0.0/_print.scss";
+@import "./bootstrap-4.0.0/_reboot.scss";
+@import "./bootstrap-4.0.0/_type.scss";
+@import "./bootstrap-4.0.0/_images.scss";
+@import "./bootstrap-4.0.0/_code.scss";
+@import "./bootstrap-4.0.0/_grid.scss";
+@import "./bootstrap-4.0.0/_tables.scss";
+@import "./bootstrap-4.0.0/_forms.scss";
+@import "./bootstrap-4.0.0/_buttons.scss";
+@import "./bootstrap-4.0.0/_transitions.scss";
+@import "./bootstrap-4.0.0/_dropdown.scss";
+@import "./bootstrap-4.0.0/_button-group.scss";
+@import "./bootstrap-4.0.0/_input-group.scss";
+@import "./bootstrap-4.0.0/_custom-forms.scss";
+@import "./bootstrap-4.0.0/_nav.scss";
+@import "./bootstrap-4.0.0/_navbar.scss";
+@import "./bootstrap-4.0.0/_card.scss";
+@import "./bootstrap-4.0.0/_breadcrumb.scss";
+@import "./bootstrap-4.0.0/_pagination.scss";
+@import "./bootstrap-4.0.0/_badge.scss";
+@import "./bootstrap-4.0.0/_jumbotron.scss";
+@import "./bootstrap-4.0.0/_alert.scss";
+@import "./bootstrap-4.0.0/_progress.scss";
+@import "./bootstrap-4.0.0/_media.scss";
+@import "./bootstrap-4.0.0/_list-group.scss";
+@import "./bootstrap-4.0.0/_close.scss";
+@import "./bootstrap-4.0.0/_modal.scss";
+@import "./bootstrap-4.0.0/_tooltip.scss";
+@import "./bootstrap-4.0.0/_popover.scss";
+@import "./bootstrap-4.0.0/_carousel.scss";
+@import "./bootstrap-4.0.0/_utilities.scss";
+
+html {
+    padding: 0px;
+    margin: 0px;
+    height: 100%;
+    font: {
+        family: $font-family-base;
+        size: 16px;
+    }
+    > body {
+        height: 100%;
+        background-color: $body-bg;
+        padding: 0px;
+        margin: 0px;
+        display: flex;
+        font: {
+            family: $font-family-base;
+            size: 16px;
+        }
+    }
+}
+
+$navbar-width: 300px;
+
+div#app-container {
+    height: 100%;
+    width: 100%;
+    @extend .d-flex;
+    & > nav {
+        height: 100%;
+        overflow-y: hidden;
+        margin-left: 0;
+        margin-right: 0;
+        padding-left: 0;
+        padding-right: 0;
+        background-color: $gray-200 !important;
+        align-content: flex-start;
+        align-items: flex-start;
+        width: $navbar-width;
+        @include transition($transition-base);
+        overflow-x: hidden;
+        & > ul {
+            width: 100%;
+            & > li {
+                margin: 0;
+                &:hover {
+                    background-color: $body-bg;
+                    & > * {
+                        color: $gray-800 !important;
+                    }
+                }
+
+                > a.nav-link {
+                    text-decoration: none;
+                    color: $gray-800;
+                    display: block;
+                    padding: {
+                        top: 8px;
+                        bottom: 7px;
+                        left: 15px;
+                        right: 15px;
+                    }
+                    & > * {
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+    }
+    & > main {
+        @include transition($transition-base);
+        @include transition($transition-base);
+        width: calc(100% - $navbar-width);
+        @extend .container;
+        & > div {
+            &:last-child {
+                display: inline;
+            }
+            &.card {
+                float: right;
+                width: 18rem;
+                margin: {
+                    top: 1rem;
+                    left: 0.5rem;
+                }
+                & em {
+                    white-space: nowrap;
+                }
+            }
+        }
+    }
+    & > footer {
+        position: fixed;
+        bottom: 0px;
+    }
+}
+
+.list-group-flush {
+    & a:hover {
+        text-decoration: none;
+    }
+}

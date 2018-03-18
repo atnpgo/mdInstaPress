@@ -1,0 +1,23 @@
+{
+    "name": "CMS",
+    "version": "1.0.0",
+    "keywords": [
+        "util",
+        "functional",
+        "server",
+        "client",
+        "browser"
+    ],
+    "author": "epageau",
+    "contributors": [],
+    "scripts": {
+        "transpile": "babel public_html/es6/ --presets env,minify --out-dir public_html/js/",
+        "transpile-watch": "babel public_html/es6/ --presets env,minify --out-dir public_html/js/ --watch"
+    },
+    "devDependencies": {
+        "babel-cli": "^6.10.1",
+        "babel-preset-env": "^1.6.1",
+        "babel-preset-minify": "^0.2.0"
+    },
+    "dependencies": {}
+}
