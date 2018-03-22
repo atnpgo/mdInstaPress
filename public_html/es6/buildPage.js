@@ -29,7 +29,7 @@ define(() => {
         ]).then(data => {
             app.container.html(app.rootTemplate(Object.assign({
                 main: data[1][0](Object.assign({
-                    main: data[0]
+                    main: Handlebars.compile(data[0])()
                 }, page)),
                 navbar: _.filter(app.site.pages, page => {
                     return _.contains(app.site.navlinks, page.href);
@@ -51,6 +51,12 @@ define(() => {
             if (pushHistory) {
                 window.history.pushState({}, document.title, '#' + page.href);
             }
+            
+            app.plugins.forEach(plugin => {
+                plugin.render()
+            });
+            
+            
             app.toggleSpinner(false);
         });
     };

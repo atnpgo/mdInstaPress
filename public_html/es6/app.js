@@ -39,6 +39,7 @@ requirejs([
 const app = {
     container: null,
     site: null,
+    plugins: [],
     toggleSpinner: state => {
         var $spinner = $('.spinner-overlay');
         if (typeof (state) === 'undefined') {
@@ -99,20 +100,9 @@ const app = {
         return Promise.all(promises);
     },
     buildCurrentPage: pushHistory => {
-
         app.container.empty();
-        Promise.all([
-            fetch(siteMapUrl).then(response => {
-                return response.json();
-            }),
-            app.loadExtTemplate('root')
-        ]).then(data => {
-            app.site = data[0];
-            app.rootTemplate = data[1][0];
-            document.title = app.site.title;
-            requirejs(['buildPage'], buildPage => {
-                buildPage(_.findWhere(app.site.pages, {href: decodeURI(window.location.hash.substring(1))}), pushHistory);
-            });
+        requirejs(['buildPage'], buildPage => {
+            buildPage(_.findWhere(app.site.pages, {href: decodeURI(window.location.hash.substring(1))}), pushHistory);
         });
     },
     // initialises the application.
@@ -125,6 +115,36 @@ const app = {
             return (new Date()).getFullYear();
         });
         app.container = $('#app-container');
-        app.buildCurrentPage(true);
+
+        Promise.all([
+            fetch(siteMapUrl).then(response => {
+                return response.json();
+            }),
+            app.loadExtTemplate('root')
+        ]).then(data => {
+            app.site = data[0];
+            app.rootTemplate = data[1][0];
+            document.title = app.site.title;
+
+            const promises = [true];
+            if (_.isArray(app.site.plugins)) {
+                app.site.plugins.forEach(pluginName => {
+                    promises.push(new Promise(resolve => {
+                        requirejs(['modules/' + pluginName], plugin => {
+                            app.plugins.push(plugin);
+                            plugin.setup(resolve);
+                        });
+                    }));
+                });
+            }
+            Promise.all(promises).then(() => {
+                app.buildCurrentPage(true);
+            });
+        });
+
+
+
+
+
     }
 };

@@ -35,5 +35,8 @@
             "type": "page",
             "date": "2017-09-04"
         }
+    ],
+    "plugins": [
+        "synthax-highlight"
     ]
 }
