@@ -12,13 +12,14 @@
 
 /* global _, Notification, i18n, Promise, fetch */
 
-const siteMapUrl = 'site/sitemap.json';
 requirejs([
+    '../siteMapUrl',
     'jquery-3.2.1.min',
     'promise.min',
     'fetch'
-], () => {
+], (siteMapUrl) => {
     app.toggleSpinner(true);
+    window.siteMapUrl = siteMapUrl;
     requirejs([
         'moment.min',
         "handlebars-v4.0.5",

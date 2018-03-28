@@ -20,23 +20,24 @@
             "href": "/jQuery.MobileScheduler/",
             "title": "Introducing jQuery.MobileScheduler",
             "source": "site/jQuery.MobileScheduler.md",
-            "type": "page",
+            "type": "post",
             "date": "2016-11-16"
         }, {
             "href": "/r-gallery/",
             "title": "A new way to view images-only subs",
             "source": "site/r-gallery.md",
-            "type": "page",
+            "type": "post",
             "date": "2017-08-03"
         }, {
             "href": "/NeoGutenberg/",
             "title": "NeoGutenberg: A printing press for the digital age",
             "source": "site/NeoGutenberg.md",
-            "type": "page",
+            "type": "post",
             "date": "2017-09-04"
         }
     ],
     "plugins": [
-        "synthax-highlight"
+        "synthax-highlight",
+        "disqus"
     ]
 }

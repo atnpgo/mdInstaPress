@@ -16,18 +16,17 @@
 define(() => {
     return {
         setup: (resolve) => {
-            $('head').append('<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">');
-            Handlebars.registerHelper('highlight', function (context, options) {
-                return `<pre><code${context ? ' class="' + context + '"' : ''}>${options.fn(this).substring(1)}</code></pre>`;
+            Handlebars.registerHelper('disqus', function (context, options) {
+                console.log('context', context);
+                console.log('options', options);
+                return `<div id="disqus_thread"></div><script>(function() {
+    var d = document, s = d.createElement('script');s.src = 'https://${context}.disqus.com/embed.js';s.setAttribute('data-timestamp', +new Date());(d.head || d.body).appendChild(s);
+})();</script>`;
             });
-            
-            requirejs(['//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js'], resolve);
-            
+            resolve();
         },
         render: () => {
-            $('pre code').each((i, block) => {
-                hljs.highlightBlock(block);
-            });
+            
         }
     };
 });
