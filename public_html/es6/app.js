@@ -22,10 +22,10 @@ requirejs([
     window.siteMapUrl = siteMapUrl;
     requirejs([
         'moment.min',
-        "handlebars-v4.0.5",
-        "showdown.min",
-        "bootstrap",
-        "underscore-1.8.3.min"
+        'handlebars-v4.0.5',
+        'showdown.min',
+        'bootstrap',
+        'underscore-1.8.3.min'
     ], (moment, handlebars, showdown) => {
         window.moment = moment;
         window.Handlebars = handlebars;
@@ -61,44 +61,8 @@ const app = {
             $spinner.fadeOut('fast');
         }
     },
-    loadExtTemplate: path => {
-        const loadSingleTemplate = (p, callback) => {
-            p = 'templates/' + p + '.html';
-            const scriptId = p.replace(/\./g, "-").replace(/\//g, "-");
-            if ($('#' + scriptId).length > 0) {
-                callback($('#' + scriptId).html());
-                return;
-            }
-            $.get({
-                url: p,
-                success: (templateData) => {
-                    const script = document.createElement("script");
-                    script.id = scriptId;
-                    script.innerHTML = templateData;
-                    script.type = "text/x-handlebars-template";
-                    document.head.appendChild(script);
-                    callback(templateData);
-                }
-            });
-        };
-        const promises = [];
-
-        if (_.isString(path)) {
-            promises.push(new Promise((resolve) => {
-                loadSingleTemplate(path, (template) => {
-                    resolve(Handlebars.compile(template));
-                });
-            }));
-        } else if (_.isArray(path)) {
-            path.forEach((p) => {
-                promises.push(new Promise((resolve) => {
-                    loadSingleTemplate(p, (template) => {
-                        resolve(Handlebars.compile(template));
-                    });
-                }));
-            });
-        }
-        return Promise.all(promises);
+    loadExtTemplate: p => {
+        return new Promise(r => requirejs([`templates/${p}`], r));
     },
     buildCurrentPage: pushHistory => {
         app.container.empty();
@@ -124,7 +88,7 @@ const app = {
             app.loadExtTemplate('root')
         ]).then(data => {
             app.site = data[0];
-            app.rootTemplate = data[1][0];
+            app.rootTemplate = data[1];
             document.title = app.site.title;
 
             const promises = [true];

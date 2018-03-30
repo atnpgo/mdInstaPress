@@ -25,10 +25,10 @@ define(() => {
                 return response.text();
             }).then(md => {
                 return app.mdConverter.makeHtml(md);
-            }), app.loadExtTemplate('page-types/' + page.type)
+            }), app.loadExtTemplate(page.type)
         ]).then(data => {
             app.container.html(app.rootTemplate(Object.assign({
-                main: data[1][0](Object.assign({
+                main: data[1](Object.assign({
                     main: Handlebars.compile(data[0])()
                 }, page)),
                 navbar: _.filter(app.site.pages, page => {

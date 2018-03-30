@@ -38,6 +38,7 @@
     ],
     "plugins": [
         "synthax-highlight",
-        "disqus"
+        "disqus",
+        "google-analytics"
     ]
 }
