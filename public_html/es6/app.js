@@ -79,6 +79,45 @@ const app = {
         Handlebars.registerHelper('currentYear', () => {
             return (new Date()).getFullYear();
         });
+        Handlebars.registerHelper('all_posts', () => {
+            const promises = [true];
+            _.sortBy(_.filter(app.site.pages, p => {
+                return p.type === 'post';
+            }), p => {
+                return moment(p.date).toDate().getTime();
+            }).reverse().forEach(p => {
+                promises.push(new Promise(resolve => {
+                    const $card = $('<a>', {
+                        'class': 'card mb-2',
+                        href: '#' + p.href
+                    });
+                    
+                    $card.append($('<h3>', {
+                        'class': 'card-header',
+                        html: p.title
+                    }));
+                    $card.append($('<div>', {
+                        'class': 'm-2',
+                        html: p.href
+                    }));
+                    
+                    resolve($card[0].outerHTML);
+                }));
+            });
+            
+            Promise.all(promises).then(data => {
+                const setText = () => {
+                    if ($('#all_posts').length) {
+                        $('#all_posts').html(data.splice(1).join(''));
+                    } else {
+                        setTimeout(setText, 10);
+                    }
+                };
+                setText();
+            });
+
+            return '<div id="all_posts"></div>';
+        });
         app.container = $('#app-container');
 
         Promise.all([

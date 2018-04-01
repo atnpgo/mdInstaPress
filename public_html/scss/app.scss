@@ -158,3 +158,8 @@ div#app-container {
 .pull-right {
     float: right;
 }
+
+a.card {
+    text-decoration: none;
+    color: $gray-900;
+}

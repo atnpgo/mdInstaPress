@@ -34,8 +34,8 @@ define(() => {
                 navbar: _.filter(app.site.pages, page => {
                     return _.contains(app.site.navlinks, page.href);
                 }),
-                posts: _.sortBy(_.filter(app.site.pages, page => {
-                    return !_.isUndefined(page.date);
+                posts: _.sortBy(_.filter(app.site.pages, p => {
+                    return p.type === 'post';
                 }), post => {
                     return moment(post.date).toDate().getTime();
                 }).reverse().splice(0, 5)

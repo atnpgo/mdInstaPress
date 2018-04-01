@@ -2,7 +2,7 @@
     <ul class="navbar-nav mr-auto">
         {{#each navbar}}
         <li class="nav-item">
-            <a class="nav-link" href="#{{href}}">{{title}}</a>
+            <a class="nav-link" {{#if external}}target="_blank" href="{{else}}href="#{{/if}}{{href}}" >{{title}}</a>
         </li>
         {{/each}}
     </ul>

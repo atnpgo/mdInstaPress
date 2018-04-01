@@ -3,7 +3,10 @@
     "operator": "Etienne Pageau",
     "navlinks": [
         "/",
-        "/blog/"
+        "/blog/",
+        "https://atnpgo.github.io/NeoGutenberg/",
+        "https://atnpgo.github.io/gallery/",
+        "https://atnpgo.github.io/rotissoire/"
     ],
     "pages": [
         {
@@ -35,11 +38,27 @@
             "type": "post",
             "date": "2017-09-04"
         }, {
-            "href": "/test/",
-            "title": "Test",
-            "source": "site/test.md",
+            "href": "/form/",
+            "title": "Form",
+            "source": "site/form.md",
             "type": "post",
             "date": "2018-04-01"
+        },
+        
+        
+        
+        {
+            "href": "https://atnpgo.github.io/NeoGutenberg/",
+            "title": "NeoGutenberg",
+            "external": true
+        }, {
+            "href": "https://atnpgo.github.io/gallery/",
+            "title": "r/Gallery",
+            "external": true
+        }, {
+            "href": "https://atnpgo.github.io/rotissoire/",
+            "title": "Rotissoire",
+            "external": true
         }
     ],
     "plugins": {
