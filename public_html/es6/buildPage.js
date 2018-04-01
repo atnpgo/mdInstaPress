@@ -53,7 +53,7 @@ define(() => {
             }
             
             app.plugins.forEach(plugin => {
-                plugin.render()
+                plugin.render();
             });
             
             

@@ -91,7 +91,7 @@ const app = {
                         'class': 'card mb-2',
                         href: '#' + p.href
                     });
-                    
+
                     $card.append($('<h3>', {
                         'class': 'card-header',
                         html: p.title
@@ -100,15 +100,23 @@ const app = {
                         'class': 'm-2',
                         html: p.href
                     }));
-                    
+
                     resolve($card[0].outerHTML);
                 }));
             });
-            
+
             Promise.all(promises).then(data => {
                 const setText = () => {
-                    if ($('#all_posts').length) {
-                        $('#all_posts').html(data.splice(1).join(''));
+                    const $allPosts = $('#all_posts');
+                    if ($allPosts.length) {
+                        $allPosts.html(data.splice(1).join('')).find('a').click(e => {
+                            e.preventDefault();
+                            app.toggleSpinner(true);
+                            requirejs(['buildPage'], buildPage => {
+                                buildPage(_.findWhere(app.site.pages, {href: $(e.currentTarget).attr('href').substring(1)}), true);
+                            });
+                        });
+
                     } else {
                         setTimeout(setText, 10);
                     }
