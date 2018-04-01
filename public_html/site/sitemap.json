@@ -34,11 +34,22 @@
             "source": "site/NeoGutenberg.md",
             "type": "post",
             "date": "2017-09-04"
+        }, {
+            "href": "/test/",
+            "title": "Test",
+            "source": "site/test.md",
+            "type": "post",
+            "date": "2018-04-01"
         }
     ],
-    "plugins": [
-        "synthax-highlight",
-        "disqus",
-        "google-analytics"
-    ]
+    "plugins": {
+        "synthax-highlight": null,
+        "forms": null,
+        "disqus": {
+            "name": "atnpgo"
+        },
+        "google-analytics": {
+            "key": "UA-51671276-1"
+        }
+    }
 }

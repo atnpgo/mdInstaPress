@@ -15,10 +15,10 @@
 
 define(() => {
     return {
-        setup: (resolve) => {
+        setup: (data, resolve) => {
             Handlebars.registerHelper('disqus', function (context, options) {
                 return `<div id="disqus_thread"></div><script>(function() {
-    var d = document, s = d.createElement('script');s.src = 'https://${context}.disqus.com/embed.js';s.setAttribute('data-timestamp', +new Date());(d.head || d.body).appendChild(s);
+    var d = document, s = d.createElement('script');s.src = 'https://${data.name}.disqus.com/embed.js';s.setAttribute('data-timestamp', +new Date());(d.head || d.body).appendChild(s);
 })();</script>`;
             });
             resolve();

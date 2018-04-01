@@ -12,5 +12,3 @@ I also, on occasions do other stuff such as:
 * Eat meat based foods.
 * Sleep all-day, all-night.
 * Party never.
-
-{{{ga 'UA-51671276-1'}}}

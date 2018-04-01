@@ -92,13 +92,13 @@ const app = {
             document.title = app.site.title;
 
             const promises = [true];
-            if (_.isArray(app.site.plugins)) {
-                app.site.plugins.forEach(pluginName => {
+            if (!_.isUndefined(app.site.plugins)) {
+                _.keys(app.site.plugins).forEach(pluginName => {
                     promises.push(new Promise(resolve => {
                         requirejs(['modules/' + pluginName], plugin => {
                             app.plugins.push(plugin);
-                            plugin.setup(resolve);
-                        });
+                            plugin.setup(app.site.plugins[pluginName], resolve);
+                        }, resolve);
                     }));
                 });
             }

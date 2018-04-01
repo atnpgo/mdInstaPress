@@ -7,5 +7,4 @@ $('#calendar').MobileScheduler();
 
 You may learn more information by visiting the [project's page](https://github.com/Oproma/jQuery.MobileScheduler) or view an [interactive demo](https://oproma.github.io/jQuery.MobileScheduler/) on your mobile device.
 
-{{{disqus 'atnpgo'}}}
-{{{ga 'UA-51671276-1'}}}
+{{{disqus}}}

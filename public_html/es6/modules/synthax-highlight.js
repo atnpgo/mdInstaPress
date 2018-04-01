@@ -15,7 +15,7 @@
 
 define(() => {
     return {
-        setup: (resolve) => {
+        setup: (data, resolve) => {
             $('head').append('<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">');
             Handlebars.registerHelper('highlight', function (context, options) {
                 return `<pre><code${context ? ' class="' + context + '"' : ''}>${options.fn(this).substring(1)}</code></pre>`;

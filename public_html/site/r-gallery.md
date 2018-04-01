@@ -2,5 +2,4 @@ A new link should be available in the header titled 'r/Gallery'. This is a galle
 
 The software is a bit rough but it was built entirely during free time...
 
-{{{disqus 'atnpgo'}}}
-{{{ga 'UA-51671276-1'}}}
+{{{disqus}}}

@@ -2,5 +2,4 @@ NeoGutenberg, an ebook editor/publisher, is now available. The software is avail
 
 This app uses markdown for file contents, in the hopes of lowering the barrier of entry to digital publishing; yet allows advanced customizations using SCSS/CSS for advanced users.
 
-{{{disqus 'atnpgo'}}}
-{{{ga 'UA-51671276-1'}}}
+{{{disqus}}}
